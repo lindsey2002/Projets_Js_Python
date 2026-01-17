@@ -74,7 +74,7 @@ formClasse.addEventListener("submit", (e) => {
     formClasse.reset();
 });
 
-// -------------------Supprimer classe-----------------//
+// -------------------Supprimer la classe-----------------//
 
 function supprimerClasse(id){
     classes = classes.filter(c => c.id !== id);
@@ -82,7 +82,7 @@ function supprimerClasse(id){
     classeEnEdition = null;
     btnAjouter.textContent = "Ajouter la classe";
     formClasse.reset();
-    
+
     sauvegarderClasses();
     AfficherClasses();
 }
