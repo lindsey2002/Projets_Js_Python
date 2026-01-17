@@ -1,4 +1,5 @@
 let classes = [];
+const btnAjouter = document.getElementById("btn-ajouter-classe");
 let classeEnEdition = null;
 
 const classeNomInput = document.getElementById("classe-nom");
@@ -58,6 +59,7 @@ formClasse.addEventListener("submit", (e) => {
             classe.nom = nomClasse;
         }
         classeEnEdition = null;
+        btnAjouter.textContent = "Ajouter la classe";
     }else{
         const nouvelleClasse = {
             id: Date.now(),
@@ -76,6 +78,11 @@ formClasse.addEventListener("submit", (e) => {
 
 function supprimerClasse(id){
     classes = classes.filter(c => c.id !== id);
+
+    classeEnEdition = null;
+    btnAjouter.textContent = "Ajouter la classe";
+    formClasse.reset();
+    
     sauvegarderClasses();
     AfficherClasses();
 }
@@ -88,6 +95,8 @@ function editerClasse(id){
 
     classeNomInput.value = classe.nom;
     classeEnEdition = id;
+
+    btnAjouter.textContent = "Mettre a jour";
 }
 
 // -------------------Initialisation-----------------//
