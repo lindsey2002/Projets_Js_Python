@@ -1,47 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classes</title>
+
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/table.css">
 </head>
 <body>
-    
-    <header>
-        <h1>Gestion des classes et matieres</h1>
-        <a href="index.html">Retour a l'acceuil</a>
-    </header>
 
-    <main>
-        <form action="" id="form-classe">
-            <label for="">Nom de la classe</label>
-            <input type="text" id="classe-nom">
-             <label for="">Matiere</label>
-            <input type="text" id="classe-matiere">
-             <label for="">Nombre de notes</label>
-            <input type="number" id="classe-nb-notes">
+<header>
+    <h1>Gestion des classes</h1>
+    <a href="index.html">Retour à l'accueil</a>
+</header>
 
-            <button type="button" id="btn-ajouter-classe">Ajouter</button>
-        </form>
+<main>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Classe</th>
-                    <th>Matiere</th>
-                    <th>Nb notes</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="table-classes">
-                <!-- je ne sais pas encore -->
-            </tbody>
-        </table>
-    </main>
+    <!-- FORMULAIRE AJOUT CLASSE -->
+    <form id="form-classe">
+        <label for="classe-nom">Nom de la classe</label>
+        <input type="text" id="classe-nom" required>
+
+        <button type="submit">Ajouter la classe</button>
+    </form>
+
+    <!-- TABLE DES CLASSES -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Classe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-classes">
+            <!-- classes ajoutées dynamiquement -->
+        </tbody>
+    </table>
+
+</main>
 
 <script src="../js/classes.js"></script>
 </body>

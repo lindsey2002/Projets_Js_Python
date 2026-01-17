@@ -1,102 +1,73 @@
-// ---------- Variables ----------
 let classes = [];
 
-// ---------- Elements HTML ----------
 const classeNomInput = document.getElementById("classe-nom");
-const matiereNomInput = document.getElementById("classe-matiere");
-const nbNotesInput = document.getElementById("classe-nb-notes");
-const btnAjouter = document.getElementById("btn-ajouter-classe");
+const formClasse = document.getElementById("form-classe");
 const tableBody = document.getElementById("table-classes");
 
+// -------------------Chargement-----------------//
 
-function chargerClasses() {
+function ChargerClasse(){
     const data = localStorage.getItem("classes");
-    if (data) {
+    if(data){
         classes = JSON.parse(data);
     }
 }
 
-function sauvegarderClasses() {
+// -------------------Sauvegarde-----------------//
+
+function sauvegarderClasses(){
     localStorage.setItem("classes", JSON.stringify(classes));
 }
 
-function afficherClasses() {
+// -------------------Afficher classe-----------------//
+
+function AfficherClasses(){
     tableBody.innerHTML = "";
 
-    for (let classe of classes) {
+    classes.forEach(classe => {
         const tr = document.createElement("tr");
 
-        tr.innerHTML = `
-    <td>${classe.nom}</td>
-
-    <td>${classe.matieres.map(m => m.nom).join(", ")}</td>
-
-    <td>${classe.matieres.map(m => m.nbNotes).join(", ")}</td>
-
-    <td>
-        <button onclick="ajouterMatiere(${classe.id})">
-            Ajouter matière
-        </button>
-        <button onclick="supprimerClasse(${classe.id})">
-            Supprimer
-        </button>
-    </td>
-`;
-
-
+        tr.innerHTML =`
+            <td>${classe.nom}</td>
+            <td>
+                <button onclick = "supprimerClasse(${classe.id})">
+                    Supprimer
+                </button>
+            </td>
+        `;
+        
         tableBody.appendChild(tr);
-    }
+    });
 }
 
+// -------------------Ajouter-----------------//
 
-function ajouterClasse() {
+formClasse.addEventListener("submit", (e) => {
+    e.preventDefault();
+
     const nomClasse = classeNomInput.value.trim();
-    if (nomClasse === "") return;
+    if(nomClasse === "") return;
 
     const nouvelleClasse = {
         id: Date.now(),
-        nom: nomClasse,
-        matieres: []
+        nom: nomClasse
     };
 
     classes.push(nouvelleClasse);
     sauvegarderClasses();
-    afficherClasses();
-    classeNomInput.value = "";
-}
+    AfficherClasses();
+    formClasse.reset();
+});
 
-btnAjouter.addEventListener("click", ajouterClasse);
+// -------------------Supprimer-----------------//
 
-function supprimerClasse(id) {
+function supprimerClasse(id){
     classes = classes.filter(c => c.id !== id);
     sauvegarderClasses();
-    afficherClasses();
+    AfficherClasses();
 }
 
-// ---------- Chargement ----------
-chargerClasses();
-afficherClasses();
+// -------------------Initialisation-----------------//
 
-function ajouterMatiere(classeId) {
-    const nomMatiere = matiereNomInput.value.trim();
-    const nbNotes = parseInt(nbNotesInput.value);
-
-    if (nomMatiere === "" || isNaN(nbNotes)) return;
-
-    const classe = classes.find(c => c.id === classeId);
-    if (!classe) return;
-
-    classe.matieres.push({
-        nom: nomMatiere,
-        nbNotes: nbNotes
-    });
-
-    sauvegarderClasses();
-    afficherClasses();
-
-    matiereNomInput.value = "";
-    nbNotesInput.value = "";
-}
-
-
-
+ChargerClasse();
+AfficherClasses();
