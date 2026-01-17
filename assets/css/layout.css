@@ -1,0 +1,11 @@
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+nav a{
+    color: rgb(37, 31, 31);
+    margin-right: 15px;
+    text-decoration: none;
+}

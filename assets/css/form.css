@@ -1,0 +1,30 @@
+form{
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+}
+
+input, select, button{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button{
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}

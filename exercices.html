@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* RESET */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        }
+
+        /* CONTAINER */
+        .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 20px;
+        }
+
+        /* HEADER */
+        .header{
+            position: sticky;
+            top: 0;
+            background: #111;
+            z-index: 1000;
+        }
+
+        .header-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo{
+            color: white;
+        }
+        .nav-list{
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-list a{
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-list a:hover{
+            color: #00aaff;
+        }
+        /*  Hero */
+        .hero{
+            height: 90vh;
+            background: linear-gradient(120deg, #0077cc, #00aaff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h2{
+            font-size: 2.5rem;
+        }
+        .hero p{
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        /*  Sections */
+        .section{
+            padding: 80px 20px;
+        }
+        .section-light{
+            background: #f5f5f5;
+        }
+        .section-title{
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+        /*  Services */
+        .services{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .services-card{
+            padding: 30px;
+            background: white;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .services-card:hover{
+            transform: translateY(-18px);
+        }
+        .services-card.active{
+            background-color: #00aaff;
+            transform: translateY(-10px);
+        }
+        .services-card.inactive{
+            background-color: white;
+            transform: translateY(-10px);
+        }
+        /*  about */
+        .about-text{
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+        /*  contact */
+        .contact-form{
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-form input,
+        .contact-form textarea{
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .contact-form button{
+            padding: 12px;
+            background: #0077cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .contact-form button:hover{
+            background: #005fa3;
+        }
+        /* message du formulaire */
+        .form-message{
+            display: none;
+            margin-bottom: 10px;
+            color: green;
+            font-weight: bold;
+        }
+        /* footer */
+        .footer{
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        @media(max-width: 768px){
+            .hero h2{
+                font-size: 2rem;
+            }
+        }
+        @media(min-width: 468px){
+            .nav-list{
+                gap: 10px;
+            }
+        }
+    </style>
+        </head>
+        <body>
+            
+            <header class="header">
+                <div class="container header-content">
+                    <h1 class="logo">MonSite</h1>
+                    <nav>
+                        <ul class="nav-list">
+                            <li><a href="#services">services</a></li>
+                            <li><a href="#about">a propos</a></li>
+                            <li><a href="#contact">contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- MAIN -->
+             <main>
+
+                <!-- HERO -->
+                 <section class="hero">
+                    <div class="hero-content">
+                        <h2>Construisons des solutions durables et modernes</h2>
+                        <p>Développement web & logiciel</p>
+                    </div>
+                 </section>
+
+                 <!-- SERVICE -->
+                  <section id="services" class="section">
+                    <h2 class="section-title">Nos services</h2>
+                    <div class="services">
+                        <div class="services-card">
+                            <h3>Web</h3>
+                            <p>Site modernes et responsives</p>
+                        </div>
+
+                        <div class="services-card">
+                            <h3>Mobile</h3>
+                            <p>Applications performantes</p>
+                        </div>
+
+                        <div class="services-card">
+                            <h3>Backend</h3>
+                            <p>APIs robustes et sécurisées</p>
+                        </div>
+                    </div>
+                  </section>
+
+                  <!-- A PROPOS -->
+                   <section id="about" class="section-light">
+                        <h2 class="section-title">A propos</h2>
+                        <p class="about-text"> Nous sommes passionnés par le création de solutions numériques
+                            simples, efficace et durables.
+                        </p>
+                   </section>
+
+                   <!-- CONTACT -->
+                    <section id="contact" class="section">
+                        <h2 class="section-title">Contact</h2>
+                        <form class="contact-form" id="contact-form">
+                            <p id="form-message" class="form-message"></p>
+                            <input type="text" placeholder="Nom">
+                            <input type="email" placeholder="Email">
+                            <textarea placeholder="Message"></textarea>
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </section>
+
+             </main>
+
+            <footer class="footer">
+            <p>© 2025 MySite</p>
+            </footer>
+
+        <script>
+            
+            const message = document.getElementById("form-message");
+            // const button = document.getElementById("contact-form");
+            const button = document.querySelector(".contact-form");
+            const formul = document.querySelectorAll(".services-card");
+            
+            formul.forEach(card => {
+                card.addEventListener("mouseenter", () => {
+                    card.classList.add("active");
+                });
+                card.addEventListener("mouseleave", () => {
+                    card.classList.remove("active");
+                })
+            });
+            
+            button.addEventListener("submit", (e)=> {
+                e.preventDefault();
+                const name =button.querySelector("input[type=text]").value;
+                const email =button.querySelector("input[type=email]").value;
+                if(name && email){
+                    if(email.includes("5")){
+                        message.textContent = "Message soumis avec succès";
+                        message.style.color = "green";
+
+                        button.reset();
+                    }else{
+                    message.textContent = "Remplir correctement tous les champs";
+                    message.style.color = "red";
+                    button.reset();
+                }
+                }else{
+                    message.textContent = "Remplir correctement tous les champs";
+                    message.style.color = "red";
+                    button.reset();
+                }
+                
+                message.style.display = "block";
+
+                setTimeout(()=> {
+                    message.style.display = "none";
+                }, 5000)
+
+                form.reset();
+            });
+
+        </script>
+    </body>
+</html>

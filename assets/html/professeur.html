@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professeurs</title>
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/table.css">
+    
+</head>
+<body>
+    <div></div>
+    <header>
+        <h1>Gestion des professeurs</h1>
+        <a href="index.html">Retour a l'acceuil</a>
+    </header>
+
+    <main>
+        <form id="form-professeur">
+
+            <label>Nom</label>
+            <input type="text" id="prof-nom">
+            <div id="error-nom" class="error-message"></div>
+
+
+            <label>Matiere</label>
+            <input type="text" id="prof-matieres">
+
+            <label>Classe</label>
+            <input type="text" id="prof-classes">
+
+            <button type="button"  id="btn-ajouter-prof">Ajouter</button>
+        </form>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Matieres</th>
+                    <th>Classes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-prof">
+                <!-- je ne sais pas encore -->
+            </tbody>
+        </table>
+
+    </main>
+<script src="../js/professeurs.js"></script>
+</body>
+</html>
