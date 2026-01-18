@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matières</title>
+
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/table.css">
+</head>
+<body>
+
+<header>
+    <h1>Gestion des matières par classe</h1>
+    <a href="index.html">Retour à l'accueil</a>
+</header>
+
+<main>
+
+    <!-- Sélection de la classe -->
+    <label for="select-classe">Choisir une classe</label>
+    <select id="select-classe">
+        <option value="">-- Sélectionner une classe --</option>
+    </select>
+
+    <!-- FORMULAIRE AJOUT MATIERE -->
+    <form id="form-matiere">
+        <label for="matiere-nom">Nom de la matière</label>
+        <input type="text" id="matiere-nom" required>
+
+        <label for="nb-notes">Nombre de notes</label>
+        <select id="nb-notes" required>
+            <option value="">-- Choisir --</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="autre">Autre</option>
+        </select>
+
+        <input type="number" id="nb-notes-autre" placeholder="Nombre de notes personnalisé" hidden>
+
+        <button type="submit" id="btn-ajouter-matiere">Ajouter la matière</button>
+    </form>
+
+    <!-- TABLE DES MATIERES POUR LA CLASSE SELECTIONNEE -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Matière</th>
+                <th>Nb notes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-matieres">
+            <!-- Matières ajoutées dynamiquement -->
+        </tbody>
+    </table>
+
+    <!-- TABLE DES CLASSES AVEC DESCRIPTION -->
+    <h2>Classes</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Classe</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="table-classes">
+            <!-- Classes avec bouton description -->
+        </tbody>
+    </table>
+
+</main>
+
+<script src="../js/matieres.js"></script>
+</body>
+</html>
