@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/recheche.css">
     <link rel="stylesheet" href="../css/table.css">
 </head>
 <body>
@@ -64,17 +65,42 @@
 
     <!-- TABLE DES CLASSES AVEC DESCRIPTION -->
     <h2>Classes</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Classe</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody id="table-classes">
-            <!-- Classes avec bouton description -->
-        </tbody>
-    </table>
+    
+    <div class="classe-zone">
+
+    <!-- Ligne "Classe" -->
+    <div class="classe-row">
+       <!-- <label>Classe</label> --> 
+
+        <div class="combo-box">
+            <input
+                type="text"
+                id="classe-search"
+                placeholder="Rechercher ou choisir une classe"
+                autocomplete="off"
+            />
+            <span class="arrow">▾</span>
+
+            <ul id="classe-options" class="options hidden">
+                <!-- injecté par JS -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ligne "Description" -->
+    <div class="classe-row">
+        <!--<label>Description</label>-->
+        <button id="btn-description">Voir description</button>
+    </div>
+
+</div>
+
+<!-- ⚠️ TABLE INVISIBLE mais CONSERVÉE pour le JS existant -->
+<table hidden>
+    <tbody id="table-classes"></tbody>
+</table>
+    <!-- C'est la que devra etre la section de recherche des classes -->
+
 
 </main>
 

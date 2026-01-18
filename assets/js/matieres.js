@@ -4,6 +4,7 @@
 let classes = JSON.parse(localStorage.getItem("classes")) || [];
 let classeEnCours = null;
 let matiereEnEdition = null;
+let classeSelectionnee = null;
 
 // -------------------------------- Elements html -------------------------------------//
 
@@ -15,6 +16,10 @@ const formMatieres = document.getElementById("form-matiere");
 const tableMatieres = document.getElementById("table-matieres");
 const tableClasses = document.getElementById("table-classes");
 const btnAjouterMatiere = document.getElementById("btn-ajouter-matiere");
+const classeSearch = document.getElementById("classe-search");
+const classeOptions = document.getElementById("classe-options");
+const arrow = document.querySelector(".arrow");
+const btnDescription = document.getElementById("btn-description");
 
 // ------------------------- Chargement de la liste des classes dans select -------------------------------//
 
@@ -154,8 +159,74 @@ function editerMatiere(matiereId){
     btnAjouterMatiere.textContent = "mettre a jour";
 }
 
+// --------------------------- Remplir la liste deroulante a partir de la classe -------------------------------//
+
+function remplirClasseOptions() {
+    classeOptions.innerHTML = "";
+
+    classes.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = c.nom;
+        li.dataset.id = c.id;
+
+        li.addEventListener("click", () => {
+            classeSearch.value = c.nom;
+            classeSelectionnee = c.id;
+            classeEnCours = c;
+            classeOptions.classList.add("hidden");
+            afficherMatieres();
+        });
+
+        classeOptions.appendChild(li);
+    });
+}
+
+remplirClasseOptions();
+
+
+// --------------------------- Ouverture via la fleche -------------------------------//
+
+arrow.addEventListener("click", (e) => {
+    e.stopPropagation();
+    classeOptions.classList.toggle("hidden");
+
+    [...classeOptions.children].forEach(li => {
+        li.style.display = "block";
+    });
+});
+
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".combo-box")) {
+        classeOptions.classList.add("hidden");
+    }
+});
+
+// --------------------------- Recherche dynamique via la saisie -------------------------------//
+
+classeSearch.addEventListener("input", () => {
+    const value = classeSearch.value.toLowerCase();
+
+    if (value === "") {
+        classeOptions.classList.add("hidden");
+        return;
+    }
+
+    classeOptions.classList.remove("hidden");
+
+    [...classeOptions.children].forEach(li => {
+        li.style.display = li.textContent.toLowerCase().includes(value)
+            ? "block"
+            : "none";
+    });
+});
+
 // --------------------------- Voir description de la classe -------------------------------//
 
-function voirDescription(classeId){
-    window.location.href = `description.html?id=${classeId}`;
-}
+btnDescription.addEventListener("click", () => {
+    if (!classeSelectionnee) {
+        alert("Veuillez sélectionner une classe");
+        return;
+    }
+
+    window.location.href = `description.html?id=${classeSelectionnee}`;
+});
