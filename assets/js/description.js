@@ -24,6 +24,7 @@ if (classe) {
         tr.innerHTML = `
             <td>${m.nom}</td>
             <td>${m.nbNotes}</td>
+            <td>${m.coef}</td>
         `;
         tbodyMatieres.appendChild(tr);
     });

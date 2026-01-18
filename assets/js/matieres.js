@@ -85,6 +85,7 @@ function afficherMatieres(){
         tr.innerHTML = `
             <td>${m.nom}</td>
             <td>${m.nbNotes}</td>
+            <td>${m.coef}</td>
             <td>
                 <button onclick = "editerMatiere(${m.id})">modifier</button>
                 <button onclick = "supprimerMatiere(${m.id})">supprimer</button>
@@ -101,11 +102,12 @@ formMatieres.addEventListener("submit", (e) => {
     if(!classeEnCours) return;
 
     const nom = matiereNomInput.value.trim();
+    const coef = Number(document.getElementById("matiere-coef").value);
     let nbNotes = nbNotesSelect.value === "autre"
         ? Number(nbNotesAutreInput.value)
         : Number(nbNotesSelect.value);
     
-    if(!nom || !nbNotes) return;
+    if(!nom || !nbNotes || !coef) return;
 
     if(matiereEnEdition){
         // Modification
@@ -113,6 +115,7 @@ formMatieres.addEventListener("submit", (e) => {
         if(matiere){
             matiere.nom = nom;
             matiere.nbNotes = nbNotes;
+            matiere.coef = coef;
         }
         matiereEnEdition = null;
         btnAjouterMatiere.textContent = "Ajouter la matiere";
@@ -121,7 +124,9 @@ formMatieres.addEventListener("submit", (e) => {
         classeEnCours.matieres.push({
             id: Date.now(),
             nom,
-            nbNotes
+            nbNotes,
+            coef,
+            notes: []
         });
     }
 

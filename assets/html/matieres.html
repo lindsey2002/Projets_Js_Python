@@ -45,7 +45,8 @@
         </select>
 
         <input type="number" id="nb-notes-autre" placeholder="Nombre de notes personnalisé" hidden>
-
+        <label for="matiere-coef">Coefficient</label>
+        <input type="number" id="matiere-coef" min="1" value="1">
         <button type="submit" id="btn-ajouter-matiere">Ajouter la matière</button>
     </form>
 
@@ -55,7 +56,9 @@
             <tr>
                 <th>Matière</th>
                 <th>Nb notes</th>
+                <th>Coeffics</th>
                 <th>Actions</th>
+                
             </tr>
         </thead>
         <tbody id="table-matieres">
